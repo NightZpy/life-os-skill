@@ -171,7 +171,9 @@ capture/state flip (near zero). Never run full sweeps for a scoped ask.
   everywhere (history, its node's 📜, day view, search). Search finds EVERYTHING, nodes
   first. Every affordance routes to the entity it names. Cadences are data, never
   hardcoded weekdays. Checked = shown; empty views offer a reset. No horizontal overflow.
-  One shell writer at a time; concurrent CLI writes are safe.
+  One shell writer at a time; concurrent CLI writes are safe. Copy buttons: iframe
+  clipboard often rejects — always textarea+execCommand fallback, never show success
+  on a failed copy (on failure, select the text and ask for the manual shortcut).
 - Commitments from any review/goal-setting become trackable objects: goal node (in the
   matrix) + ritual for the recurring part + deadline for the dated part + pinned memory.
 - Privacy: the hub is local; back it up to a PRIVATE git repo (auto-commit on build);

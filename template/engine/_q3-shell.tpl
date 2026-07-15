@@ -839,7 +839,7 @@ document.getElementById("copyPrompt").addEventListener("click",function(){
  function done(){btn.textContent="✓ copiado";setTimeout(function(){btn.textContent="📋 Copy prompt";},1600);}
  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback();});}
  else{fallback();}
- function fallback(){var ta=document.createElement("textarea");ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done();}catch(e){}document.body.removeChild(ta);}
+ function fallback(){var ta=document.createElement("textarea");ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.focus();ta.select();var s=false;try{s=document.execCommand("copy");}catch(e){}document.body.removeChild(ta);if(s){done();}else{btn.textContent="⚠️ copia manual";setTimeout(function(){btn.textContent="📋 Copy prompt";},2600);}}
 });
 function switchTab(id){
  document.querySelectorAll(".ptabs button").forEach(function(x){x.classList.toggle("on",x.getAttribute("data-tab")===id);});
@@ -1397,9 +1397,10 @@ function renderHoy(){
  box.querySelectorAll("[data-copytpl]").forEach(function(x){x.addEventListener("click",function(){
   var t=document.getElementById(x.getAttribute("data-copytpl"));if(!t)return;
   var btn=x,orig=btn.textContent;
-  function done(){btn.textContent="✓ copiado";setTimeout(function(){btn.textContent=orig;},1300);}
+  function ok(){btn.textContent="✓ copiado";setTimeout(function(){btn.textContent=orig;},1300);}
   var txt=t.textContent;
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){done();});}else{done();}
+  function ko(){var ta=document.createElement("textarea");ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.focus();ta.select();var s=false;try{s=document.execCommand("copy");}catch(e){}document.body.removeChild(ta);if(s){ok();}else{btn.textContent="⚠️ copia manual (⌘C)";var sel=window.getSelection(),rg=document.createRange();rg.selectNodeContents(t);sel.removeAllRanges();sel.addRange(rg);setTimeout(function(){btn.textContent=orig;},2600);}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,ko);}else{ko();}
  });});
 }
 renderHoy();
