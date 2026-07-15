@@ -91,7 +91,10 @@ python3 update_q3.py status | validate | build | touch | recover --from <html>
 5. RITUAL DRAFTS: generate the day's ready-to-paste updates into `drafts`
    {ritualId:{date,text}} for every communication ritual due — daily check-in every day (LIGHT: headline-level, no technical detail);
    meeting-bound rituals on the day their real meeting appears in the calendar (not a
-   fixed weekday). From the DB + sweep, owner's voice, with LINKS in the destination's
+   fixed weekday). From the DB + sweep — PRIMARY source = the owner's OWN sent messages
+   that day (dedicated from:owner sweep); LANGUAGE = the destination's language (ritual
+   `lang` or infer from the channel), never the owner↔agent chat language — owner's
+   voice, with LINKS in the destination's
    native format (Slack: `name (raw URL)` — md [text](url) renders literally there;
    md contexts: [text](url)); never bare IDs; each renders inside its ritual with a copy button (recurring
    updates write themselves).
