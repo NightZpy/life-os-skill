@@ -170,7 +170,9 @@ capture/state flip (near zero). Never run full sweeps for a scoped ask.
 - Virtual-node doctrine: derivable = computed, primary = stored. Register once → surfaces
   everywhere (history, its node's 📜, day view, search). Search finds EVERYTHING, nodes
   first. Every affordance routes to the entity it names. Cadences are data, never
-  hardcoded weekdays. Checked = shown; empty views offer a reset. No horizontal overflow.
+  hardcoded weekdays. Report specs are data too: stakeholder asks on a recurring
+  report fold into its ritual template+guide the same day, so the next draft picks
+  them up automatically. Checked = shown; empty views offer a reset. No horizontal overflow.
   One shell writer at a time; concurrent CLI writes are safe. Copy buttons: iframe
   clipboard often rejects — always textarea+execCommand fallback, never show success
   on a failed copy (on failure, select the text and ask for the manual shortcut).
